@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
+  get 'dashboards/index'
+
   resources :listings
   resources :hot_spots
   resources :distributions
   resources :cities
   resources :countries
   devise_for :admins
+  
+  scope :admins do
+    root :to => 'dashboards#index', :as => :admin_root
+  end
   
   root 'cities#index'
   # The priority is based upon order of creation: first created -> highest priority.

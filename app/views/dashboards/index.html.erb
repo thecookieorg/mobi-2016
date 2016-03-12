@@ -1,0 +1,70 @@
+<div class="row">
+    <div class="col-md-12">
+        <h1>Welcome admin</h1>        
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-md-3">
+        <div class="panel panel-danger">
+          <div class="panel-heading"><h3 class="text-center">Countries &amp; Cities</h2></div>
+          <div class="panel-body">
+              <div class="row">
+                  <div class="col-sm-6">
+                    <h5 class="text-center"><strong>Countries: <%= @countries.size %></stong></h5>          
+                  </div>
+                  <div class="col-sm-6">
+                    <h5 class="text-center"><strong>Cities: <%= @cities.size %></stong></h5>          
+                  </div>
+              </div>
+          </div>
+          <div class="panel-footer">
+              <div class="row">
+                  <div class="col-sm-6">
+                      <%= link_to 'Add Country', new_country_path, class: "btn btn-danger btn-block" %>
+                  </div>
+                  <div class="col-sm-6">
+                      <%= link_to 'Add City', new_city_path, class: "btn btn-danger btn-block" %>
+                  </div>
+              </div>
+          </div>
+              
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="panel panel-danger">
+          <div class="panel-heading"><h3 class="text-center">Distributors</h2></div>
+          <div class="panel-body">
+            <h4 class="text-center"><strong>Total # of Distributors:</strong> <em><%= @distributions.size %></em></h4>
+
+          </div>
+          <div class="panel-footer"><%= link_to 'Add Distribution', new_distribution_path, class: "btn btn-danger btn-block" %></div>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="panel panel-danger">
+          <div class="panel-heading"><h3 class="text-center">Hot Spot Categories</h2></div>
+          <div class="panel-body">
+            <h4 class="text-center"><strong>Total # of Categories:</strong> <em><%= @hot_spots.size %></em></h4>
+
+          </div>
+          <div class="panel-footer"><%= link_to 'Add Hot Spot Category', new_hot_spot_path, class: "btn btn-danger btn-block" %></div>
+        </div>
+    </div>
+     
+     <div class="col-md-3">
+        <div class="panel panel-danger">
+          <div class="panel-heading"><h3 class="text-center">Hot Spots</h2></div>
+          <div class="panel-body">
+            <h4 class="text-center"><strong>Total # of Hot Spots:</strong> <em><%= @listings.size %></em></h4>
+
+          </div>
+          <div class="panel-footer"><%= link_to 'Add Hot Spot', new_listing_path, class: "btn btn-danger btn-block" %></div>
+        </div>
+    </div>
+    
+</div>
+
+<hr>

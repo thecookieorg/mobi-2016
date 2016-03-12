@@ -12,8 +12,18 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search a hot spot...">
+        </div>
+        <button type="submit" class="btn btn-default">Search</button>
+      </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to 'Home', root_path %></li>
+        <% if admin_signed_in? %>
+          <li><%= link_to 'Home', dashboards_index_path %></li>
+        <% else %>
+          <li><%= link_to 'Home', root_path %></li>
+        <% end %>
         
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>

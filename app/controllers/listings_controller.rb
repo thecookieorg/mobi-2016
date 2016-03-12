@@ -4,7 +4,13 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-    @listings = Listing.all
+    #@listings = Listing.all
+    if params[:city].blank?
+      @listings = Listing.all
+    else
+      @city_id = City.find_by(name: params[:city]).id
+      @listings = Listing.where(city_id: @city_id).order("created_at DESC")
+    end
   end
 
   # GET /listings/1
