@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Hot Spots</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @hot_spots.each do |hot_spot| %>
+      <tr>
+        <td><%= hot_spot.name %></td>
+        <td><%= link_to 'Show', hot_spot %></td>
+        <td><%= link_to 'Edit', edit_hot_spot_path(hot_spot) %></td>
+        <td><%= link_to 'Destroy', hot_spot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Hot spot', new_hot_spot_path %>

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @listing.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @listing.address %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @listing.phone %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @listing.website %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @listing.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @listing.longitude %>
+</p>
+
+<p>
+  <strong>Hot spot:</strong>
+  <%= @listing.hot_spot %>
+</p>
+
+<%= link_to 'Edit', edit_listing_path(@listing) %> |
+<%= link_to 'Back', listings_path %>

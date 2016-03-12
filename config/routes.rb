@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :listings
+  resources :hot_spots
   resources :distributions
   resources :cities
   resources :countries
