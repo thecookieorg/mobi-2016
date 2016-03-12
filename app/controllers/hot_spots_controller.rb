@@ -1,10 +1,18 @@
 class HotSpotsController < ApplicationController
+  before_action :authenticate_admin!, only: [:new, :edit, :update, :destroy]
   before_action :set_hot_spot, only: [:show, :edit, :update, :destroy]
 
   # GET /hot_spots
   # GET /hot_spots.json
   def index
-    @hot_spots = HotSpot.all
+    #@hot_spots = HotSpot.all
+    @city = City.all
+    if params[:city].blank?
+      @hot_spots = HotSpot.all
+    else
+      @city_id = City.find_by(name: params[:city]).id
+      @hot_spots = HotSpot.where(city_id: @city_id).order("created_at DESC")
+    end
   end
 
   # GET /hot_spots/1
@@ -69,6 +77,6 @@ class HotSpotsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hot_spot_params
-      params.require(:hot_spot).permit(:name)
+      params.require(:hot_spot).permit(:name, :city_id)
     end
 end

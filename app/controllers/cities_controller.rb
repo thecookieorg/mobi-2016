@@ -1,5 +1,5 @@
 class CitiesController < ApplicationController
-  before_action :authenticate_admin!, only: [:edit, :update, :destroy]
+  before_action :authenticate_admin!, only: [:new, :edit, :update, :destroy]
   before_action :set_city, only: [:show, :edit, :update, :destroy]
   
 
@@ -8,6 +8,7 @@ class CitiesController < ApplicationController
   def index
     @cities = City.all
     @listings = Listing.all
+    @hot_spots = HotSpot.all
   end
 
   # GET /cities/1

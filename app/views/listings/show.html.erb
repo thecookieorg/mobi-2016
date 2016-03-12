@@ -1,39 +1,48 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @listing.name %>
-</p>
+<div class="row">
+  <div class="col-md-4">
+    
+    <h2><%= @listing.name %></h2>
+    
+    <p>
+      <strong>Address:</strong>
+      <%= @listing.address %>
+    </p>
+    
+    <p>
+      <strong>Phone:</strong>
+      <%= @listing.phone %>
+    </p>
+    
+    <p>
+      <strong>Website:</strong>
+      <%= @listing.website %>
+    </p>
+    
+    <p>
+      <strong>Hot spot:</strong>
+      <%= @listing.hot_spot.name %>
+    </p>
+  </div>
+  <div class="col-md-8">
+      <div id="map" style='width: 700px; height: 300px;'></div>  
+  </div>
+</div>
 
-<p>
-  <strong>Address:</strong>
-  <%= @listing.address %>
-</p>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @listing.phone %>
-</p>
 
-<p>
-  <strong>Website:</strong>
-  <%= @listing.website %>
-</p>
 
-<p>
-  <strong>Latitude:</strong>
-  <%= @listing.latitude %>
-</p>
-
-<p>
-  <strong>Longitude:</strong>
-  <%= @listing.longitude %>
-</p>
-
-<p>
-  <strong>Hot spot:</strong>
-  <%= @listing.hot_spot.name %>
-</p>
 
 <%= link_to 'Edit', edit_listing_path(@listing) %> |
 <%= link_to 'Back', listings_path %>
+
+
+
+<script>
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  });
+</script>

@@ -1,21 +1,61 @@
 class ListingsController < ApplicationController
+  before_action :authenticate_admin!, only: [:new, :edit, :update, :destroy]
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
   # GET /listings
   # GET /listings.json
   def index
     #@listings = Listing.all
-    if params[:city].blank?
+    #if params[:hot_spots].blank?
+    @city = City.all
+    if params[:hot_spot].blank?
       @listings = Listing.all
+      @hash = Gmaps4rails.build_markers(@listings) do |listing, marker|
+        marker.lat listing.latitude
+        marker.lng listing.longitude
+        marker.infowindow "<h4>#{listing.name}</h4><p><b>Address:</b> #{listing.address}</p><p><b>Phone:</b> #{listing.phone}</p><p><b>Website:</b> #{listing.website}</p>"
+        marker.json({
+            name:     listing.name,
+            address: listing.address
+          })
+        marker.picture({
+                      anchor: [0, 0],
+                      url: "http://thecookiedining.com/mobimaps-pin.png",
+                      width: "64",
+                      height: "64"
+                 })
+      end
     else
-      @city_id = City.find_by(name: params[:city]).id
-      @listings = Listing.where(city_id: @city_id).order("created_at DESC")
+      #@hot_spot_id = HotSpot.find_by(name: params[:hot_spot]).id
+      @hot_spot_id = HotSpot.find_by(name: params[:hot_spot]).id
+      @listings = Listing.where(hot_spot_id: @hot_spot_id).order("created_at DESC")
+      @hash = Gmaps4rails.build_markers(@listings) do |listing, marker|
+        marker.lat listing.latitude
+        marker.lng listing.longitude
+        marker.infowindow "<h4>#{listing.name}</h4><p><b>Address:</b> #{listing.address}</p><p><b>Phone:</b> #{listing.phone}</p><p><b>Website:</b> #{listing.website}</p>"
+        marker.json({
+            name:     listing.name,
+            address: listing.address
+          })
+        marker.picture({
+                      anchor: [0, 0],
+                      url: "http://thecookiedining.com/mobimaps-pin.png",
+                      width: "64",
+                      height: "64"
+                 })
+      end
     end
   end
 
   # GET /listings/1
   # GET /listings/1.json
   def show
+    @listing = Listing.find(params[:id])
+    @hash = Gmaps4rails.build_markers(@listing) do |listing, marker|
+      marker.lat listing.latitude
+      marker.lng listing.longitude
+      marker.infowindow "<b>#{listing.name}</b>"
+    end
   end
 
   # GET /listings/new

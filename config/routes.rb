@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  get 'pages/index'
+
+  get 'pages/team'
+
+  get 'pages/advertise'
+
+  get 'pages/contact'
+
+  get 'pages/testimonial'
+
+  get 'pages/magazine'
+
   get 'dashboards/index'
 
   resources :listings
@@ -12,7 +24,7 @@ Rails.application.routes.draw do
     root :to => 'dashboards#index', :as => :admin_root
   end
   
-  root 'cities#index'
+  root 'pages#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
