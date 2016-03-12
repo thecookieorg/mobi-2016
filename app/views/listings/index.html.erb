@@ -25,7 +25,7 @@
         <td><%= listing.website %></td>
         <td><%= listing.latitude %></td>
         <td><%= listing.longitude %></td>
-        <td><%= listing.hot_spot %></td>
+        <td><%= listing.hot_spot.name %></td>
         <td><%= link_to 'Show', listing %></td>
         <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
         <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
