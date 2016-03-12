@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md"
+</div>
+<h1>Map Distributions Partners</h1>
+
+
+<% if current_admin %>
+  <%= link_to 'New Distribution', new_distribution_path, class: "btn btn-success" %>
+<% end %>
+
+<table class="table">
+  <tbody>
+    <% @distributions.each do |distribution| %>
+      <tr>
+        <td><%= distribution.name %></td>
+        <% if current_admin %>
+          <td><%= link_to 'Edit', edit_distribution_path(distribution) %></td>
+          <td><%= link_to 'Destroy', distribution, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
