@@ -55,6 +55,12 @@ class ListingsController < ApplicationController
       marker.lat listing.latitude
       marker.lng listing.longitude
       marker.infowindow "<b>#{listing.name}</b>"
+      marker.picture({
+                      anchor: [0, 0],
+                      url: "http://thecookiedining.com/mobimaps-pin.png",
+                      width: "64",
+                      height: "64"
+                 })
     end
   end
 

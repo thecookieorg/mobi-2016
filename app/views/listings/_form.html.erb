@@ -6,7 +6,15 @@
     <%= f.input :address %>
     <%= f.input :phone %>
     <%= f.input :website %>
-    <%= f.association :hot_spot %>
+    <div class="form-group">
+      <%= f.label 'Choose a city' %><br>
+      <%= f.collection_select :city_id, City.order(:name), :id, :name, include_blank: true %>  
+    </div>
+    <div class="form-group">
+      <%= f.label 'Pick a category' %><br>
+      <%= f.grouped_collection_select :hot_spot_id, City.order(:name), :hot_spots, :name, :id, :name, include_blank: true %>  
+    </div>
+    
   </div>
 
 
