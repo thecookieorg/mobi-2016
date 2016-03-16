@@ -14,7 +14,6 @@
       <%= f.label 'Pick a category' %><br>
       <%= f.grouped_collection_select :hot_spot_id, City.order(:name), :hot_spots, :name, :id, :name, include_blank: true %>  
     </div>
-    
   </div>
 
 
